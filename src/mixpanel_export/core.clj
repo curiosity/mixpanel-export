@@ -53,15 +53,3 @@
                :body
                str/split-lines
                (map json/parse-string))))
-
-(def export-registered-events
-  (partial export ["User Register"]))
-
-(defn spit-json
-  [f obj]
-  (spit f (json/generate-string obj)))
-
-(comment
-  (def now (t/now))
-  (def last-month (t/minus now (t/months 1)))
-  (spit-json "output.json" (export-registered-events last-month now)))
